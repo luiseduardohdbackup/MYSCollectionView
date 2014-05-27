@@ -93,6 +93,20 @@
     }
 }
 
+- (void)prepareForInterfaceOrientationChange
+{
+    if ([self.collectionViewLayout respondsToSelector:@selector(didBeginUpdates)]) {
+        [(MYSCollectionViewFlowLayout *)self.collectionViewLayout didBeginUpdates];
+    }
+}
+
+- (void)finishInterfaceOrientationChange
+{
+    if ([self.collectionViewLayout respondsToSelector:@selector(didFinishUpdates)]) {
+        [(MYSCollectionViewFlowLayout *)self.collectionViewLayout didFinishUpdates];
+    }
+}
+
 
 
 
@@ -111,5 +125,7 @@
         [(MYSCollectionViewFlowLayout *)self.collectionViewLayout didFinishUpdates];
     }
 }
+
+
 
 @end

@@ -55,8 +55,11 @@
             UICollectionViewLayoutAttributes *item = [springBehaviour.items firstObject];
             for (UICollectionViewLayoutAttributes *attributes in itemsInVisibleRectArray) {
                 if ([attributes.indexPath isEqual:item.indexPath]) {
-                    item.frame = attributes.frame;
-                    [self.dynamicAnimator updateItemUsingCurrentState:item];
+                    if ([itemsInVisibleRectArray count] != [self.dynamicAnimator.behaviors count] ||
+                        item.frame.size.width != self.collectionView.bounds.size.width) {
+                        item.frame = attributes.frame;
+                        [self.dynamicAnimator updateItemUsingCurrentState:item];
+                    }
                     springBehaviour.anchorPoint = attributes.center;
                 }
             }
@@ -92,9 +95,23 @@
 
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
-    return [self.dynamicAnimator itemsInRect:rect];
+    if (self.isDynamicsEnabled) {
+        return [self.dynamicAnimator itemsInRect:rect];
+    }
+    else {
+        return [super layoutAttributesForElementsInRect:rect];
+    }
 }
 
+- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (self.isDynamicsEnabled) {
+        return [self.dynamicAnimator layoutAttributesForCellAtIndexPath:indexPath];
+    }
+    else {
+        return [super layoutAttributesForItemAtIndexPath:indexPath];
+    }
+}
 
 
 

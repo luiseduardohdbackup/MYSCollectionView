@@ -8,5 +8,6 @@
 
 
 @interface MYSCollectionView : UICollectionView
-
+- (void)prepareForInterfaceOrientationChange;
+- (void)finishInterfaceOrientationChange;
 @end
