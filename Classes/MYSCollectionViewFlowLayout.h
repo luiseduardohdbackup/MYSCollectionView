@@ -18,6 +18,7 @@
 
 @property (nonatomic, assign) BOOL isDynamicsEnabled;
 
+- (void)reset;
 
 #pragma mark - Override
 

@@ -113,6 +113,13 @@
     }
 }
 
+- (void)reset
+{
+    [self.dynamicAnimator removeAllBehaviors];
+    [self.visibleIndexPathsSet removeAllObjects];
+}
+
+
 
 
 #pragma mark - Override

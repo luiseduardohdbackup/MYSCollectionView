@@ -93,6 +93,21 @@
     }
 }
 
+- (void)reloadData
+{
+    if ([self.collectionViewLayout respondsToSelector:@selector(reset)]) {
+        [(MYSCollectionViewFlowLayout *)self.collectionViewLayout reset];
+    }
+    [UIView animateWithDuration:0 animations:^{
+        [super reloadData];
+    }];
+}
+
+
+
+
+#pragma mark (custom public)
+
 - (void)prepareForInterfaceOrientationChange
 {
     if ([self.collectionViewLayout respondsToSelector:@selector(didBeginUpdates)]) {
