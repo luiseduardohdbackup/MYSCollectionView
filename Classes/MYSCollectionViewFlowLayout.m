@@ -60,7 +60,9 @@
                         item.frame = attributes.frame;
                         [self.dynamicAnimator updateItemUsingCurrentState:item];
                     }
-                    springBehaviour.anchorPoint = attributes.center;
+                    if ([springBehaviour isKindOfClass:[UIAttachmentBehavior class]]) {
+                        springBehaviour.anchorPoint = attributes.center;
+                    }
                 }
             }
         }];
