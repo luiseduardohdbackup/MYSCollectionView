@@ -108,14 +108,14 @@
 
 #pragma mark (custom public)
 
-- (void)prepareForInterfaceOrientationChange
+- (void)disableDynamics
 {
     if ([self.collectionViewLayout respondsToSelector:@selector(didBeginUpdates)]) {
         [(MYSCollectionViewFlowLayout *)self.collectionViewLayout didBeginUpdates];
     }
 }
 
-- (void)finishInterfaceOrientationChange
+- (void)enableDynamics
 {
     if ([self.collectionViewLayout respondsToSelector:@selector(didFinishUpdates)]) {
         [(MYSCollectionViewFlowLayout *)self.collectionViewLayout didFinishUpdates];

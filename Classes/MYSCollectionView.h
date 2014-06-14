@@ -8,6 +8,6 @@
 
 
 @interface MYSCollectionView : UICollectionView
-- (void)prepareForInterfaceOrientationChange;
-- (void)finishInterfaceOrientationChange;
+- (void)disableDynamics;
+- (void)enableDynamics;
 @end
