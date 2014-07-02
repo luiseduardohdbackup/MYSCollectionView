@@ -129,18 +129,13 @@
 
 - (void)updatesWillBegin
 {
-    if ([self.collectionViewLayout respondsToSelector:@selector(didBeginUpdates)]) {
-        [(MYSCollectionViewFlowLayout *)self.collectionViewLayout didBeginUpdates];
-    }
+    [self disableDynamics];
 }
 
 - (void)updatesDidFinish
 {
-    if ([self.collectionViewLayout respondsToSelector:@selector(didFinishUpdates)]) {
-        [(MYSCollectionViewFlowLayout *)self.collectionViewLayout didFinishUpdates];
-    }
+    [self enableDynamics];
 }
-
 
 
 @end
